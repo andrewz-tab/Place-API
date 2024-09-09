@@ -20,6 +20,9 @@
 
 `php artisan env:encrypt` 
 `php artisan jwt:secret -f` 
+<li>Измените владельца каталога storage
+
+`chown -R www-data:www-data /var/www/storage`
 <li>Выполните миграцию, заполнив базу фиктивными данными
 
 `php artisan migrate --seed`
