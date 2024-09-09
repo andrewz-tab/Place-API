@@ -1,0 +1,1030 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Doc API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v2": {},
+        "/api/v1/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Регистрация",
+                "operationId": "6e52ff23aa9cea46fb54b8ebcee89517",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "login": {
+                                                "type": "string",
+                                                "example": "andrew"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "Qqwerty1!"
+                                            },
+                                            "password_confirmation": {
+                                                "type": "string",
+                                                "example": "Qqwerty1!"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "example": "user"
+                                                },
+                                                "login": {
+                                                    "type": "string",
+                                                    "example": "andrew"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Авторизация",
+                "operationId": "781a60fa12e59c4c19bc1327e29dc3a4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "login": {
+                                                "type": "string",
+                                                "example": "andrew"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "Qqwerty1!"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "example": "user"
+                                                },
+                                                "login": {
+                                                    "type": "string",
+                                                    "example": "andrew"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Выход",
+                "operationId": "14cdb08c44ff9631229ac7836de99789",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Successfully logged out"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/refresh": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Обновление токена",
+                "operationId": "2554c57589bfa94febc78e106f82329b",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "access_token": {
+                                                    "type": "string",
+                                                    "example": "Token_value"
+                                                },
+                                                "token_type": {
+                                                    "type": "string",
+                                                    "example": "bearer"
+                                                },
+                                                "expires_in": {
+                                                    "type": "string",
+                                                    "example": "3600"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/me": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Авторизанный пользователь",
+                "operationId": "e4504bab389599b3cc1c60c7d8de2962",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "example": "user"
+                                                },
+                                                "login": {
+                                                    "type": "string",
+                                                    "example": "andrew"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/places": {
+            "get": {
+                "tags": [
+                    "Place"
+                ],
+                "summary": "Список мест",
+                "operationId": "2418de94a22e07adbd6a7d9ac162621e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "14"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Some place"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "number",
+                                                        "example": "14.324987"
+                                                    },
+                                                    "latitude": {
+                                                        "type": "number",
+                                                        "example": "-60.324987"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Place"
+                ],
+                "summary": "Создание записи о месте",
+                "operationId": "9296af3eb6275aed1f9da38c38e76cf9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Some place"
+                                            },
+                                            "longitude": {
+                                                "type": "number",
+                                                "maximum": 180,
+                                                "minimum": -180,
+                                                "example": 14.324987
+                                            },
+                                            "latitude": {
+                                                "type": "number",
+                                                "maximum": 90,
+                                                "minimum": -90,
+                                                "example": -60.324987
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some place"
+                                                },
+                                                "longitude": {
+                                                    "type": "number",
+                                                    "example": "14.324987"
+                                                },
+                                                "latitude": {
+                                                    "type": "number",
+                                                    "example": "-60.324987"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/places/{place}": {
+            "get": {
+                "tags": [
+                    "Place"
+                ],
+                "summary": "Запись о месте",
+                "operationId": "a0631087447ce542ac9a4352aeb50c18",
+                "parameters": [
+                    {
+                        "name": "place",
+                        "in": "path",
+                        "description": "ID места",
+                        "required": true,
+                        "example": 14
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some place"
+                                                },
+                                                "longitude": {
+                                                    "type": "number",
+                                                    "example": "14.324987"
+                                                },
+                                                "latitude": {
+                                                    "type": "number",
+                                                    "example": "-60.324987"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/places/{place}/add": {
+            "post": {
+                "tags": [
+                    "Place"
+                ],
+                "summary": "Добавление места в список желаемых для текущего пользователя",
+                "operationId": "0846dd99462d79eef64db279ce812758",
+                "parameters": [
+                    {
+                        "name": "place",
+                        "in": "path",
+                        "description": "ID места",
+                        "required": true,
+                        "example": 14
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some place"
+                                                },
+                                                "longitude": {
+                                                    "type": "number",
+                                                    "example": "14.324987"
+                                                },
+                                                "latitude": {
+                                                    "type": "number",
+                                                    "example": "-60.324987"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "No more items can be added | This item has already been added",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No more items can be added"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/places/{place}/remove": {
+            "delete": {
+                "tags": [
+                    "Place"
+                ],
+                "summary": "Удаление места из списка желаемых для текущего пользователя",
+                "operationId": "231c066ba4a71d6483b1afb37172aeea",
+                "parameters": [
+                    {
+                        "name": "place",
+                        "in": "path",
+                        "description": "ID места",
+                        "required": true,
+                        "example": 14
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some place"
+                                                },
+                                                "longitude": {
+                                                    "type": "number",
+                                                    "example": "14.324987"
+                                                },
+                                                "latitude": {
+                                                    "type": "number",
+                                                    "example": "-60.324987"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "This item is not included in the list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "This item is not included in the list"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Список пользователей",
+                "operationId": "6f8f0134e30ae7557795c2a8f042fd83",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "14"
+                                                    },
+                                                    "role": {
+                                                        "type": "string",
+                                                        "example": "user"
+                                                    },
+                                                    "login": {
+                                                        "type": "string",
+                                                        "example": "andrew"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Создание пользователя",
+                "operationId": "6da8a20df7b3e41929be6abac6e75525",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "login": {
+                                                "type": "string",
+                                                "example": "andrew"
+                                            },
+                                            "role": {
+                                                "type": "string",
+                                                "example": "user"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "password1234"
+                                            },
+                                            "password_confirmation": {
+                                                "type": "string",
+                                                "example": "password1234"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "example": "user"
+                                                },
+                                                "login": {
+                                                    "type": "string",
+                                                    "example": "andrew"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{user}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Запись о пользователе",
+                "operationId": "06188816e296c47e37dca39a0d2b792f",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "example": 14
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "example": "user"
+                                                },
+                                                "login": {
+                                                    "type": "string",
+                                                    "example": "andrew"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{user}/favorites": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Список желаемого пользователя",
+                "operationId": "683a98a5e6b2a3013ab57c95f70ca856",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "example": 14
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "14"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Some place"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "number",
+                                                        "example": "14.324987"
+                                                    },
+                                                    "latitude": {
+                                                        "type": "number",
+                                                        "example": "-60.324987"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{user}/place/{place}/add": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Добавление места в список желаемых заданного пользователя",
+                "operationId": "819037f22539187abd7a999619d37514",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "example": 14
+                    },
+                    {
+                        "name": "place",
+                        "in": "path",
+                        "description": "ID места",
+                        "required": true,
+                        "example": 3
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some place"
+                                                },
+                                                "longitude": {
+                                                    "type": "number",
+                                                    "example": "14.324987"
+                                                },
+                                                "latitude": {
+                                                    "type": "number",
+                                                    "example": "-60.324987"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "No more items can be added | This item has already been added",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No more items can be added"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{user}/place/{place}/remove": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Удаление места из список желаемого заданного пользователя",
+                "operationId": "832450d7bfdfe70a0f8dce0793cdbe9c",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "example": 14
+                    },
+                    {
+                        "name": "place",
+                        "in": "path",
+                        "description": "ID места",
+                        "required": true,
+                        "example": 3
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some place"
+                                                },
+                                                "longitude": {
+                                                    "type": "number",
+                                                    "example": "14.324987"
+                                                },
+                                                "latitude": {
+                                                    "type": "number",
+                                                    "example": "-60.324987"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "This item is not included in the list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "This item is not included in the list"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
+            "name": "Place",
+            "description": "Place"
+        },
+        {
+            "name": "User",
+            "description": "User"
+        }
+    ]
+}
